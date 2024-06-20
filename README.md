@@ -1,1 +1,1 @@
-# tech-titans
+# aulas-js

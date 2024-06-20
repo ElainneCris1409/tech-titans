@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = "cadastro"> <!--div para cadastro de pessoas-->
+    <input type="text" id = "nome" placeholder="nome">
+    <input type="text" id = "sobrenome" placeholder="sobrenome">
+    <input type="text" id = "idade" placeholder="idade">
+    <button onclick="adicionar()">Adicionar</button>
+</div>
+<div id = "lista">
+    <input type="text" id = "idadeFiltro" placeholder="idade Filtro">
+    <input type="text" id = "apelidoClientes" placeholder="apelido Filtro">
+    <input type="text" id = "firstletter" placeholder="primeira letra do nome"> <!--input para filtrar por primeira letra do nome-->
+    <button onclick="filtrar()">Filtrar</button>
+    <button onclick="apelido()">Apelido</button>
+    <button onclick="firstLetter()">Primeira Letra</button> <!--botão para chamar a função primeiraLetra-->
+
+    <p id = "listaP"></p>
+
+</div>
+   <script src="./arrays.js"></script> <!--importando o arquivo arrays.js-->
+        
+</body>
+</html>
