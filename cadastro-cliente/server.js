@@ -215,9 +215,9 @@ app.get('/movimentacao', async(req, res) => {
 
 app.put('/movimentacao', async(req, res) => {
     try {
-        const {descricao, valor, tipo_transacao, id_conta, data_movimentacao} = req.body;
+        const {id, descricao, valor, tipo_transacao, id_conta, data_movimentacao} = req.body;
         const connection = await pool.getConnection(); // Obtem uma conexão do pool com a base de dados 
-        atualizarMovimentacao(descricao, valor, tipo_transacao, id_conta, data_movimentacao, connection);
+        atualizarMovimentacao(descricao, valor, tipo_transacao, id_conta, data_movimentacao, connection, id);
         res.status(200).json({ message: 'Movimentacao atualizado com sucesso' });
     } catch (error) {
         console.error('Erro ao atualizar movimentacao:', error);
@@ -225,8 +225,8 @@ app.put('/movimentacao', async(req, res) => {
     }
 });
 
-   async function atualizarMovimentacao (descricao, valor, tipo_transacao, id_conta, data_movimentacao, connection){
-    await connection.execute('UPDATE MOVIMENTACAO SET descricao = ?, valor = ?, tipo_transacao = ?, id_conta = ?, data_movimentacao = ? WHERE id = ?', ([descricao, valor, tipo_transacao, id_conta, data_movimentacao]));
+   async function atualizarMovimentacao (descricao, valor, tipo_transacao, id_conta, data_movimentacao, connection, id){
+    await connection.execute('UPDATE MOVIMENTACAO SET descricao = ?, valor = ?, tipo_transacao = ?, id_conta = ?, data_movimentacao = ? WHERE id = ?', ([descricao, valor, tipo_transacao, id_conta, data_movimentacao, id]));
     connection.release();
 }
 
