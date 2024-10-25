@@ -1,4 +1,4 @@
-let idade = 30;
+let idade = 20;
 
 if(idade > 30){
     console.log("Idade maior do que 30");
