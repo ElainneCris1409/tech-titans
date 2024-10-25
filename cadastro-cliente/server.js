@@ -65,13 +65,13 @@ app.get('/contas_clientes', async(req, res) => {
     }
 });
 
-app.post('/cliente', async(req, res) => {
+app.post('/cliente', async(req, res) => { //tipo de requisição, URI: porta onde está a correr o servidor.
     console.log(req.body);
     const {nome, morada} = req.body; // informações para colocar no postman no body
     try {
         if(nome !== null && morada !== null){
-            const connection = await pool.getConnection();
-            await connection.execute('INSERT INTO cliente (nome, morada) VALUES (?, ?)', [nome, morada]);
+            const connection = await pool.getConnection(); // Obtem uma conexão do pool com a base de dados(connection)
+            await connection.execute('INSERT INTO cliente (nome, morada) VALUES (?, ?)', [nome, morada]); //após a conexão, executa a query
             connection.release();    
             res.json({sucess: true, message: 'cliente registado'});        
         }
